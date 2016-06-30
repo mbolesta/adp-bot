@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Support.UI;
 using By = OpenQA.Selenium.Extensions.By;
@@ -25,8 +26,8 @@ namespace adp_bot
 		{
 			driver.Navigate().GoToUrl("https://workforcenow.adp.com/portal/theme#/MyTeam_ttd_MyTeamTabPTOCategoryListOfRequests/MyTeamTabPTOCategoryListOfRequests");
 
-			var acceptAllRequestsLink = Wait(driver).Until(ExpectedConditions.ElementToBeClickable(By.JQuerySelector("#markAllApprovedLink")));
-			acceptAllRequestsLink.Click();
+			Wait(driver).Until(ExpectedConditions.ElementToBeClickable(By.JQuerySelector("#markAllApprovedLink"))).Click();
+			Wait(driver).Until(ExpectedConditions.ElementToBeClickable(By.JQuerySelector("#processRequestsBtn"))).Click();
 		}
 
 		private static WebDriverWait Wait(IWebDriver driver)
